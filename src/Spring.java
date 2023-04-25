@@ -69,4 +69,14 @@ public class Spring {
 
         return x;
     }
+
+    public Spring inSeries(Spring that) {
+        double kPrime = k + that.getStiffness();
+        return new Spring(kPrime);
+    }
+
+    public Spring inParallel(Spring that) {
+        double kPrime = 1 / (1 / k + 1 / that.getStiffness());
+        return new Spring(kPrime);
+    }
 }
